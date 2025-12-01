@@ -24,7 +24,7 @@ def load_config(args):
     """
     with open(args.config, 'r') as stream:
         try:
-            config = yaml.load(stream)
+            config = yaml.load(stream, Loader=yaml.SafeLoader)
         except yaml.YAMLError as exc:
             print(args.config)
             print(exc)
