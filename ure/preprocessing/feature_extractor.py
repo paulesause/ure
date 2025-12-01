@@ -11,6 +11,7 @@ sentence = 3
 pos = 4
 docPath = 5
 #  ======= Relation features =======
+nltk.download('stopwords')
 stopwords_list = nltk.corpus.stopwords.words('english')
 _digits = re.compile('\d')
 
@@ -281,7 +282,7 @@ def get_lexicon(args):
             feats = getFeaturesThreshold(
                 lexicon=relationLexicon, featureExs=featureExtrs, 
                 info=[re[1], re[4], re[5], re[7], re[8], re[6]],
-                arg1=re[2], arg2=re[3], expand=True, threshold=args.threshold)
+                arg1=re[2], arg2=re[3], expand=True, threshold=int(args.threshold))
         f.write('{}\n'.format(' '.join(map(lambda x: str(x), feats))))
 
     with open(lexicon_file, 'w') as f:
