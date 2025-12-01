@@ -254,7 +254,7 @@ def loadTACRED(fileName):
                 if len(fields) != 11:
                     print(
                         "a problem with the file format at line" + str(line_id) + "(# fields is wrong) len is " +
-                        str(len(fields)) + "instead of 9")
+                        str(len(fields)) + "instead of 11")
                     continue
                 # this will be 10
                 relationExamples.append([str(count)] + fields)
