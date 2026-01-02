@@ -2,3 +2,7 @@
 *.pyc
 data/nyt/
 data/tacred/
+venv
+tmp*
+*.db
+models
