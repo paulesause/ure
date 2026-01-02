@@ -118,15 +118,26 @@ if __name__ == '__main__':
 
         study = optuna.create_study(study_name=study_name, storage=storage_name)
         study.optimize(objective, n_trials=1)
-    elif config["mode"] == "evaluate-best":
+    elif config["mode"] == "test-best":
         
-        model = Encoder(config={
+        study_name = config["study_name"]
+        storage_name = config["storage_name"]
+        study = optuna.create_study(study_name=study_name, storage=storage_name, load_if_exists=True)
+        
+        config_eval={
             'n_rels': n_rels,
             'n_ents': vocas['entity'].size(),
             'ent_embdim': config["ent_embdim"],
             'n_etype_with_subjobj': vocas['etype_with_subjobj'].size(),
             'n_filters': config["n_filters"]
-        })
+        }
+
+        
+        print(config_eval)
+        config_eval.update(study.best_params)
+        print(config_eval)
+
+        model = Encoder(config=config_eval)
         model = utils.cuda(model)
         model.summary()
         model.eval()

@@ -35,6 +35,10 @@ def load_config(args):
 
     config["mode"] = args.mode
 
+    # include optuna args in config
+    config["storage_name"] = args.storage_name
+    config["study_name"] =  args.study_name
+
     if not os.path.isdir(config["model_path"]):
         os.makedirs(config["model_path"])
 
@@ -81,6 +85,10 @@ def parse_args(a=None):
     parser.add_argument("--word_embdim", type=int, default=50)
     parser.add_argument("--max_len", type=int, help="max sentence length", default=100)
     parser.add_argument("--n_filters", type=int, default=230)
+
+    # optuna params
+    parser.add_argument("--storage_name", type=str, default=None)
+    parser.add_argument("--study_name", type=str, default=None)
     
     if a is None:
         args = parser.parse_args()
