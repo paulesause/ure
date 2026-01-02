@@ -1,12 +1,12 @@
 # Remember to change the corresponding paths in `config.yml`
-TRAIN_PATH=train.txt
-DEV_PATH=dev.txt
-TEST_PATH=test.txt
-VOCAB_FILE=dict.word
-ENTITY=dict.entity
-ENTITY_FREQUENCY=dict.ent_wf
-ENTITY_TYPE=dict.enttype
-RELATION_PATH=dict.relation
+TRAIN_PATH=data/nyt/train.txt
+DEV_PATH=data/nyt/dev.txt
+TEST_PATH=data/nyt/test.txt
+VOCAB_FILE=data/nyt/dict.word
+ENTITY=data/nyt/dict.entity
+ENTITY_FREQUENCY=data/nyt/dict.ent_wf
+ENTITY_TYPE=data/nyt/dict.enttype
+RELATION_PATH=data/nyt/dict.relation
 # Remove NA instances
 awk -F '\t' '{if($9!="") print $0}' $DEV_PATH > $DEV_PATH.filtered
 awk -F '\t' '{if($9!="") print $0}' $TEST_PATH > $TEST_PATH.filtered

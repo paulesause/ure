@@ -31,8 +31,8 @@ loss_coef_alpha      : 0.01
 loss_coef_beta       : 0.02
 
 # Training
-batchsize            : 100
-n_epochs             : 10
+batchsize            : 50 #100
+n_epochs             : 10 #10
 patience             : 10
 
 # ----------- 
